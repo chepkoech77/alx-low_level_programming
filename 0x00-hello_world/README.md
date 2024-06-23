@@ -1,1 +1,1 @@
-prints exactly "Programming is like building a multilingual puzzle
+ prints exactly with proper grammar, but the outcome is a piece of art

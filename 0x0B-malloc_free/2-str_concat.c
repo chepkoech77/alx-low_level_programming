@@ -1,45 +1,57 @@
-#include "main.h"
 #include <stdlib.h>
-#include <stddef.h>
 
 /**
- * str_concat - concatenates two strings
- * @s1: param
- * @s2: second param
+ * str_concat - concatenates two strings.
+ * @s1: first string.
+ * @s2: second string.
  *
- * Return: pointer
+ * Return: pointer to the concatenated string or NULL on failure.
  */
 char *str_concat(char *s1, char *s2)
 {
-	int len1 = 0, len2 = 0, i, j;
-	char *ptr;
+    char *ptr;
+    int i, len1 = 0, len2 = 0;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+    /* Calculate length of s1 */
+    if (s1 != NULL)
+    {
+        while (s1[len1] != '\0')
+        {
+            len1++;
+        }
+    }
 
-	while (s1[len1] != '\0')
-		len1++;
-	while (s2[len2 != '\0'])
-		len2++;
-	ptr = malloc(sizeof(char) * (len1 + len2 + 1));
+    /* Calculate length of s2 */
+    if (s2 != NULL)
+    {
+        while (s2[len2] != '\0')
+        {
+            len2++;
+        }
+    }
 
-	if (ptr == NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
+    /* Allocate memory for the concatenated string */
+    ptr = malloc(sizeof(char) * (len1 + len2 + 1));
+    if (ptr == NULL)
+    {
+        return NULL;
+    }
 
-	for (i = 0; i < len1; i++;)
-	{
-		ptr[i] = s[i];
-	}
+    /* Copy s1 into ptr */
+    for (i = 0; i < len1; i++)
+    {
+        ptr[i] = s1[i];
+    }
 
-	for (j = 0; j <= len2; j++)
-	{
-		ptr[i] = s2[j];
-		i++;
-	}
-	return (ptr);
+    /* Copy s2 into ptr */
+    for (i = 0; i < len2; i++)
+    {
+        ptr[len1 + i] = s2[i];
+    }
+
+    /* Null-terminate the concatenated string */
+    ptr[len1 + len2] = '\0';
+
+    return ptr;
 }
+
